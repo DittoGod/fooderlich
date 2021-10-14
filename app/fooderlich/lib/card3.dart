@@ -39,7 +39,35 @@ class Card3 extends StatelessWidget {
                 ],
               ),
             ),
-            // TODO 7: Add Center widget with Chip widget children
+            Center(
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                spacing: 12,
+                children: [
+                  Chip(
+                    label: Text('Healthy',
+                        style: FooderlichTheme.darkTextTheme.bodyText1),
+                    backgroundColor: Colors.black.withOpacity(0.7),
+                    onDeleted: () {
+                      print('delete');
+                    },
+                  ),
+                  Chip(
+                    label: Text('Vegan',
+                        style: FooderlichTheme.darkTextTheme.bodyText1),
+                    backgroundColor: Colors.black.withOpacity(0.7),
+                    onDeleted: () {
+                      print('delete');
+                    },
+                  ),
+                  Chip(
+                    label: Text('Carrots',
+                        style: FooderlichTheme.darkTextTheme.bodyText1),
+                    backgroundColor: Colors.black.withOpacity(0.7),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
