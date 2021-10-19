@@ -28,12 +28,83 @@ class GroceryItemScreen extends StatefulWidget {
 }
 
 class _GroceryItemScreenState extends State<GroceryItemScreen> {
-  // TODO: Add grocery item screen state properties
+  final _nameController = TextEditingController();
+  String _name = '';
+  Importance _importance = Importance.low;
+  DateTime _dueDate = DateTime.now();
+  TimeOfDay _timeOfDay = TimeOfDay.now();
+  Color _currentColor = Colors.green;
+  int _currentSliderValue = 0;
+
+  @override
+  void initState() {
+    // 1
+    final originalItem = widget.originalItem;
+    if (originalItem != null) {
+      _nameController.text = originalItem.name;
+      _name = originalItem.name;
+      _currentSliderValue = originalItem.quantity;
+      _importance = originalItem.importance;
+      _currentColor = originalItem.color;
+      final date = originalItem.date;
+      _timeOfDay = TimeOfDay(hour: date.hour, minute: date.minute);
+      _dueDate = date;
+    }
+
+    // 2
+    _nameController.addListener(() {
+      setState(() {
+        _name = _nameController.text;
+      });
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO 12: Add GroceryItemScreen Scaffold
-    return Container(color: Colors.orange);
+    // 1
+    return Scaffold(
+      // 2
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              // TODO 24: Add callback handler
+            },
+          )
+        ],
+        // 3
+        elevation: 0.0,
+        // 4
+        title: Text(
+          'Grocery Item',
+          style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+        ),
+      ),
+      // 5
+      body: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            // TODO 13: Add name TextField
+            // TODO 14: Add Importance selection
+            // TODO 15: Add date picker
+            // TODO 16: Add time picker
+            // TODO 17: Add color picker
+            // TODO 18: Add slider
+            // TODO: 19: Add Grocery Tile
+          ],
+        ),
+      ),
+    );
   }
 
   // TODO: Add buildNameField()
