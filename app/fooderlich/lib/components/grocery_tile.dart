@@ -23,31 +23,37 @@ class GroceryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.0,
+      height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 2
-          Container(width: 5.0, color: item.color),
-          // 3
-          const SizedBox(width: 16.0),
-          // 4
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          // 1
+          Row(
             children: [
-              // 5
-              Text(
-                item.name,
-                style: GoogleFonts.lato(
-                    decoration: textDecoration,
-                    fontSize: 21.0,
-                    fontWeight: FontWeight.bold),
+              // 2
+              Container(width: 5.0, color: item.color),
+              // 3
+              const SizedBox(width: 16.0),
+              // 4
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // 5
+                  Text(
+                    item.name,
+                    style: GoogleFonts.lato(
+                      decoration: textDecoration,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4.0),
+                  buildDate(),
+                  const SizedBox(height: 4.0),
+                  buildImportance(),
+                ],
               ),
-              const SizedBox(height: 4.0),
-              buildDate(),
-              const SizedBox(height: 4.0),
-              buildImportance(),
             ],
           ),
           // 6
@@ -57,12 +63,14 @@ class GroceryTile extends StatelessWidget {
               Text(
                 item.quantity.toString(),
                 style: GoogleFonts.lato(
-                    decoration: textDecoration, fontSize: 21.0),
+                  decoration: textDecoration,
+                  fontSize: 21,
+                ),
               ),
               // 8
-              buildCheckbox(),
+              buildCheckbox()
             ],
-          ),
+          )
         ],
       ),
     );
