@@ -25,17 +25,35 @@ class GroceryListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = groceryItems[index];
           // TODO 28: Wrap in a Dismissable
-          // TODO 27: Wrap in an InkWell
-          // 5
-          return GroceryTile(
-            key: Key(item.id),
-            item: item,
-            // 6
-            onComplete: (change) {
-              // 7
-              if (change != null) {
-                manager.completeItem(index, change);
-              }
+          // 1
+          return InkWell(
+            child: GroceryTile(
+                key: Key(item.id),
+                item: item,
+                onComplete: (change) {
+                  if (change != null) {
+                    manager.completeItem(index, change);
+                  }
+                }),
+            // 2
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GroceryItemScreen(
+                    originalItem: item,
+                    // 3
+                    onUpdate: (item) {
+                      // 4
+                      manager.updateItem(item, index);
+                      // 5
+                      Navigator.pop(context);
+                    },
+                    // 6
+                    onCreate: (item) {},
+                  ),
+                ),
+              );
             },
           );
         },
