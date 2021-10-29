@@ -56,14 +56,14 @@ class _FooderlichState extends State<Fooderlich> {
           } else {
             theme = FooderlichTheme.light();
           }
-          // TODO: Replace with Material.router
-          return MaterialApp(
+          return MaterialApp.router(
             theme: theme,
             title: 'Fooderlich',
-            home: Router(
-              routerDelegate: _appRouter,
-              backButtonDispatcher: RootBackButtonDispatcher(),
-            ),
+            backButtonDispatcher: RootBackButtonDispatcher(),
+            // 1
+            routeInformationParser: routeParser,
+            // 2
+            routerDelegate: _appRouter,
           );
         },
       ),
